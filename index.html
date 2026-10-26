@@ -1,778 +1,1985 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BIRTHDAY BLISS - Luxury Celebration Planner</title>
-    <style>
-        :root {
-            --bg-dark: #0a0b0d;
-            --panel-dark: #121418;
-            --gold-primary: #d4af37;
-            --gold-bright: #f3e5ab;
-            --gold-gradient: linear-gradient(135deg, #bf953f 0%, #fcf6ba 25%, #b38728 50%, #fbf5b7 75%, #aa771c 100%);
-            --text-light: #f5f6f8;
-            --text-muted: #8a909a;
-            --crimson-alert: #ff3b30;
-            --crimson-glow: rgba(255, 59, 48, 0.15);
-            --border-color: rgba(212, 175, 55, 0.2);
-            --radius: 8px;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Birthday Bliss | Signature Celebration Planner</title>
+  <style>
+    :root {
+      --black: #08090b;
+      --black2: #111216;
+      --panel: #17181d;
+      --panel2: #1e2026;
+      --gold: #d8b15c;
+      --gold2: #f3d88d;
+      --white: #f8f7f3;
+      --muted: #aaa8a1;
+      --line: #34343a;
+      --green: #7bc6a4;
+      --blue: #9ac8f5;
+      --rose: #e8a7b5;
+      --bg-dark: #0a0b0d;
+      --panel-dark: #121418;
+      --gold-primary: #d4af37;
+      --gold-bright: #f3e5ab;
+      --gold-gradient: linear-gradient(135deg, #bf953f 0%, #fcf6ba 25%, #b38728 50%, #fbf5b7 75%, #aa771c 100%);
+      --text-light: #f5f6f8;
+      --text-muted: #8a909a;
+      --crimson-alert: #ff3b30;
+      --crimson-glow: rgba(255, 59, 48, 0.15);
+      --border-color: rgba(212, 175, 55, 0.2);
+      --radius: 10px;
+    }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            -webkit-tap-highlight-color: transparent;
-        }
+    * { box-sizing: border-box; }
 
-        body {
-            background-color: var(--bg-dark);
-            color: var(--text-light);
-            padding: 16px;
-            font-size: 14px;
-            line-height: 1.5;
-        }
+    html { scroll-behavior: smooth; }
 
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-        }
+    body {
+      margin: 0;
+      background: radial-gradient(ellipse at 50% -20%, #292318 0%, var(--black) 46%, #050506 100%);
+      color: var(--white);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      min-height: 100vh;
+    }
 
-        header {
-            text-align: center;
-            margin-bottom: 24px;
-            padding: 24px 16px;
-            background: var(--panel-dark);
-            border: 1px solid var(--border-color);
-            border-radius: var(--radius);
-            position: relative;
-            overflow: hidden;
-        }
+    button, input, select, textarea {
+      font: inherit;
+    }
 
-        header::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; height: 2px;
-            background: var(--gold-gradient);
-        }
+    .app {
+      max-width: 1380px;
+      margin: 0 auto;
+      padding: 24px 18px 40px;
+    }
 
-        .brand-meta {
-            font-size: 10px;
-            letter-spacing: 2px;
-            color: var(--gold-primary);
-            text-transform: uppercase;
-            font-weight: 700;
-            margin-bottom: 4px;
-        }
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 18px 22px;
+      background: rgba(17, 18, 22, 0.82);
+      border: 1px solid rgba(216, 177, 92, 0.18);
+      border-radius: 18px;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.18);
+    }
 
-        .product-title {
-            font-size: 28px;
-            font-weight: 800;
-            letter-spacing: 1px;
-            background: var(--gold-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-transform: uppercase;
-            margin-bottom: 8px;
-        }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
 
-        .tagline {
-            color: var(--text-muted);
-            font-size: 12px;
-            font-style: italic;
-        }
+    .brand-mark {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border-radius: 12px;
+      background: linear-gradient(135deg, rgba(216,177,92,0.24), rgba(243,216,141,0.14));
+      color: var(--gold2);
+      border: 1px solid rgba(243,216,141,0.28);
+      font-size: 20px;
+      box-shadow: inset 0 0 18px rgba(243,216,141,0.12);
+    }
 
-        .assurance-box {
-            background: rgba(212, 175, 55, 0.05);
-            border-left: 3px solid var(--gold-primary);
-            padding: 12px;
-            margin-top: 16px;
-            border-radius: 0 var(--radius) var(--radius) 0;
-            font-size: 12px;
-            color: var(--text-muted);
-            text-align: left;
-        }
+    .brand-name {
+      letter-spacing: 0.2em;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--gold2);
+      text-transform: uppercase;
+    }
 
-        .section-card {
-            background: var(--panel-dark);
-            border: 1px solid var(--border-color);
-            border-radius: var(--radius);
-            padding: 20px;
-            margin-bottom: 20px;
-        }
+    .brand-sub {
+      color: var(--muted);
+      font-size: 11px;
+      margin-top: 2px;
+    }
 
-        .section-title {
-            font-size: 16px;
-            font-weight: 700;
-            letter-spacing: 0.5px;
-            color: var(--gold-bright);
-            margin-bottom: 16px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            text-transform: uppercase;
-            border-bottom: 1px solid rgba(212, 175, 55, 0.1);
-            padding-bottom: 8px;
-        }
+    .top-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
 
-        .form-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 16px;
-        }
+    .btn {
+      appearance: none;
+      border: 1px solid rgba(216,177,92,0.24);
+      border-radius: 12px;
+      background: rgba(255,255,255,0.02);
+      color: var(--white);
+      padding: 11px 15px;
+      cursor: pointer;
+      transition: transform 0.16s ease, border-color 0.16s ease, background 0.16s ease;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
 
-        @media (min-width: 600px) {
-            .form-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-            .full-width {
-                grid-column: span 2;
-            }
-        }
+    .btn:hover {
+      transform: translateY(-1px);
+      border-color: rgba(216,177,92,0.5);
+    }
 
-        .field-group {
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-        }
+    .btn.gold {
+      background: linear-gradient(135deg, #bf953f 0%, #fcf6ba 25%, #b38728 50%, #fbf5b7 75%, #aa771c 100%);
+      border: none;
+      color: #17120b;
+      box-shadow: 0 12px 24px rgba(216,177,92,0.18);
+    }
 
-        label {
-            font-size: 11px;
-            text-transform: uppercase;
-            color: var(--text-muted);
-            letter-spacing: 0.5px;
-            font-weight: 600;
-        }
+    .btn.quiet {
+      background: rgba(255,255,255,0.02);
+      color: var(--white);
+    }
 
-        input, select, textarea {
-            background: #1a1d24;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            color: var(--text-light);
-            padding: 10px 12px;
-            border-radius: 6px;
-            font-size: 14px;
-            outline: none;
-            transition: border-color 0.2s;
-            width: 100%;
-        }
+    .hero {
+      margin-top: 22px;
+      background: linear-gradient(180deg, rgba(22, 23, 28, 0.82), rgba(16, 17, 21, 0.9));
+      border: 1px solid rgba(216,177,92,0.18);
+      border-radius: 24px;
+      padding: 34px 28px 28px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 24px 60px rgba(0,0,0,0.18);
+    }
 
-        input:focus, select:focus, textarea:focus {
-            border-color: var(--gold-primary);
-        }
+    .hero:after {
+      content: "✦";
+      position: absolute;
+      right: 36px;
+      top: 24px;
+      font-size: 54px;
+      color: rgba(243,216,141,0.15);
+      line-height: 1;
+      pointer-events: none;
+    }
 
-        .ledger-box {
-            border: 1px solid var(--border-color);
-            border-radius: 6px;
-            padding: 16px;
-            background: #16191f;
-            transition: all 0.3s ease;
-        }
+    .eyebrow {
+      display: inline-block;
+      font-size: 12px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold2);
+      font-weight: 700;
+      margin-bottom: 14px;
+    }
 
-        .ledger-box.overrun {
-            border-color: var(--crimson-alert);
-            background: var(--crimson-glow);
-            box-shadow: 0 0 10px rgba(255, 59, 48, 0.2);
-        }
+    .hero h1 {
+      margin: 0;
+      max-width: 620px;
+      font-size: clamp(2.4rem, 4vw, 4.1rem);
+      line-height: 0.96;
+      letter-spacing: -0.05em;
+      color: var(--white);
+    }
 
-        .ledger-metrics {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 12px;
-            margin-bottom: 16px;
-        }
+    .hero h1 em {
+      font-style: normal;
+      color: var(--gold2);
+      font-family: Georgia, "Times New Roman", serif;
+      font-weight: 500;
+    }
 
-        .metric {
-            text-align: center;
-            background: rgba(0,0,0,0.2);
-            padding: 10px;
-            border-radius: 6px;
-        }
+    .hero p {
+      color: #d8d5cf;
+      max-width: 660px;
+      margin-top: 18px;
+      font-size: 1.05rem;
+      line-height: 1.65;
+    }
 
-        .metric-val {
-            font-size: 18px;
-            font-weight: 700;
-            color: var(--text-light);
-            margin-top: 4px;
-        }
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 26px;
+    }
 
-        .metric-val.alert-text {
-            color: var(--crimson-alert);
-        }
+    .hero-foot {
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
 
-        .row-item {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            background: rgba(0, 0, 0, 0.15);
-            padding: 10px;
-            border-radius: 6px;
-            margin-bottom: 8px;
-            align-items: center;
-        }
+    .status-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 999px;
+      background: var(--green);
+      box-shadow: 0 0 10px rgba(123,198,164,0.8);
+      display: inline-block;
+    }
 
-        .row-item input, .row-item select {
-            flex: 1;
-            min-width: 100px;
-            padding: 6px 10px;
-            font-size: 13px;
-        }
+    .layout {
+      margin-top: 22px;
+      display: grid;
+      grid-template-columns: 270px minmax(0, 1fr);
+      gap: 22px;
+      align-items: start;
+    }
 
-        .btn {
-            background: var(--gold-gradient);
-            color: #000;
-            border: none;
-            padding: 12px 20px;
-            font-size: 13px;
-            font-weight: 700;
-            text-transform: uppercase;
-            border-radius: 6px;
-            cursor: pointer;
-            letter-spacing: 0.5px;
-            transition: opacity 0.2s;
-            width: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-        }
+    .sidebar {
+      background: rgba(17, 18, 22, 0.86);
+      border: 1px solid rgba(216,177,92,0.18);
+      border-radius: 18px;
+      padding: 18px 14px;
+      position: sticky;
+      top: 18px;
+    }
 
-        .btn:hover {
-            opacity: 0.9;
-        }
+    .side-title {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--gold2);
+      padding: 8px 10px 4px;
+      font-weight: 700;
+    }
 
-        .btn-secondary {
-            background: transparent;
-            border: 1px solid var(--border-color);
-            color: var(--gold-bright);
-            padding: 8px 14px;
-            font-size: 12px;
-            margin-top: 8px;
-            width: auto;
-            align-self: flex-start;
-        }
+    .nav {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-top: 8px;
+    }
 
-        .btn-secondary:hover {
-            background: rgba(212, 175, 55, 0.1);
-        }
+    .nav button {
+      appearance: none;
+      width: 100%;
+      border: 1px solid transparent;
+      background: transparent;
+      color: var(--white);
+      text-align: left;
+      padding: 12px 12px;
+      border-radius: 12px;
+      cursor: pointer;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transition: background 0.15s ease, border-color 0.15s ease;
+    }
 
-        .btn-danger {
-            background: transparent;
-            border: 1px solid rgba(255,59,48,0.4);
-            color: var(--crimson-alert);
-            padding: 6px;
-            width: auto;
-            border-radius: 6px;
-            cursor: pointer;
-            line-height: 1;
-        }
+    .nav button.active,
+    .nav button:hover {
+      background: rgba(216,177,92,0.08);
+      border-color: rgba(216,177,92,0.18);
+    }
 
-        .btn-danger:hover {
-            background: rgba(255,59,48,0.1);
-        }
+    .nav .ico { color: var(--gold2); }
 
-        .checklist-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 10px;
-            padding: 10px;
-            background: rgba(255,255,255,0.02);
-            border-radius: 6px;
-            margin-bottom: 8px;
-        }
+    .side-card {
+      margin-top: 16px;
+      padding: 14px 12px;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(216,177,92,0.12);
+      color: var(--muted);
+      line-height: 1.6;
+      font-size: 0.9rem;
+    }
 
-        .checklist-item input[type="checkbox"] {
-            width: 18px;
-            height: 18px;
-            accent-color: var(--gold-primary);
-            cursor: pointer;
-            margin-top: 2px;
-        }
+    .side-card strong {
+      color: var(--gold2);
+      display: block;
+      margin-bottom: 8px;
+      font-size: 0.95rem;
+    }
 
-        .checklist-text {
-            flex: 1;
-        }
+    .content {
+      min-width: 0;
+    }
 
-        .checklist-meta {
-            font-size: 11px;
-            color: var(--gold-primary);
-            text-transform: uppercase;
-            font-weight: 600;
-            margin-bottom: 2px;
-        }
+    .tab {
+      background: rgba(17,18,22,0.78);
+      border: 1px solid rgba(216,177,92,0.18);
+      border-radius: 18px;
+      padding: 20px 20px 24px;
+      min-height: 320px;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+    }
 
-        .export-container {
-            margin-top: 30px;
-            margin-bottom: 50px;
-        }
+    .tab.hidden { display: none; }
 
-        @media print {
-            body {
-                background: #fff !important;
-                color: #000 !important;
-                padding: 0 !important;
-            }
-            .container {
-                max-width: 100% !important;
-            }
-            .section-card {
-                background: #fff !important;
-                border: none !important;
-                border-bottom: 1px solid #ddd !important;
-                border-radius: 0 !important;
-                padding: 15px 0 !important;
-                page-break-inside: avoid;
-            }
-            .section-title {
-                color: #000 !important;
-                border-bottom: 2px solid #000 !important;
-            }
-            input, select, textarea {
-                background: transparent !important;
-                border: none !important;
-                border-bottom: 1px solid #000 !important;
-                border-radius: 0 !important;
-                color: #000 !important;
-                padding: 4px 0 !important;
-            }
-            .btn, .btn-secondary, .btn-danger, .assurance-box, .export-container, .brand-meta::after {
-                display: none !important;
-            }
-            .metric {
-                background: transparent !important;
-                border: 1px solid #000 !important;
-            }
-            .metric-val {
-                color: #000 !important;
-            }
-            .row-item {
-                background: transparent !important;
-                border-bottom: 1px dashed #ccc !important;
-                padding: 6px 0 !important;
-            }
-        }
-    </style>
+    .section-head {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 18px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .section-head h2 {
+      margin: 0;
+      font-size: clamp(1.5rem, 2vw, 2rem);
+      letter-spacing: -0.04em;
+    }
+
+    .muted {
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: 0.96rem;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      padding: 7px 12px;
+      background: rgba(123,198,164,0.12);
+      border: 1px solid rgba(123,198,164,0.28);
+      color: var(--green);
+      font-size: 0.83rem;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .metric-row {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+
+    .metric {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(216,177,92,0.12);
+      border-radius: 14px;
+      padding: 16px 14px;
+    }
+
+    .metric small {
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      display: block;
+      font-size: 0.72rem;
+      margin-bottom: 6px;
+    }
+
+    .metric strong {
+      display: block;
+      font-size: clamp(1.5rem, 2vw, 2.2rem);
+      letter-spacing: -0.04em;
+      color: var(--white);
+    }
+
+    .mini-label {
+      margin-top: 6px;
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    .panel-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 18px;
+      margin-top: 8px;
+      margin-bottom: 4px;
+    }
+
+    .panel {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(216,177,92,0.12);
+      border-radius: 14px;
+      padding: 18px 18px 16px;
+    }
+
+    .panel h3 {
+      margin: 0;
+      font-size: 1.1rem;
+      color: var(--gold2);
+    }
+
+    .overview-title {
+      font-family: Georgia, serif;
+      font-size: clamp(1.7rem, 2.1vw, 2.4rem);
+      font-weight: 500;
+      margin: 10px 0 8px;
+      color: var(--white);
+    }
+
+    .overview-text {
+      color: #d9d9d8;
+      line-height: 1.7;
+      margin: 0;
+    }
+
+    .next-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-top: 14px;
+      color: #ece7dc;
+    }
+
+    .next-steps .step {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 10px 12px;
+      border-radius: 10px;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.04);
+    }
+
+    .next-steps .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--gold2);
+      margin-top: 8px;
+      flex-shrink: 0;
+    }
+
+    .field-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 10px;
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .field label {
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 0.72rem;
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    .field input,
+    .field select,
+    .field textarea,
+    .panel input,
+    .panel select,
+    .panel textarea {
+      width: 100%;
+      border: 1px solid rgba(255,255,255,0.09);
+      background: rgba(16, 17, 21, 0.8);
+      color: var(--white);
+      border-radius: 12px;
+      padding: 12px 13px;
+      outline: none;
+      transition: border-color 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .field input:focus,
+    .field select:focus,
+    .field textarea:focus,
+    .panel input:focus,
+    .panel select:focus,
+    .panel textarea:focus {
+      border-color: rgba(216,177,92,0.5);
+      box-shadow: 0 0 0 3px rgba(216,177,92,0.12);
+    }
+
+    textarea { resize: vertical; min-height: 110px; }
+
+    .split {
+      display: grid;
+      grid-template-columns: 1.3fr 0.7fr;
+      gap: 16px;
+      margin-top: 18px;
+    }
+
+    .compact-card {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(216,177,92,0.12);
+      border-radius: 14px;
+      padding: 18px;
+    }
+
+    .subhead {
+      margin: 0 0 14px;
+      font-size: 1rem;
+      color: var(--gold2);
+    }
+
+    .budget-controls,
+    .guest-controls,
+    .task-controls,
+    .vendor-controls {
+      display: flex;
+      gap: 8px;
+      margin-top: 12px;
+      flex-wrap: wrap;
+    }
+
+    .row-item {
+      display: flex;
+      gap: 8px;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.04);
+      border-radius: 12px;
+      padding: 10px;
+      margin-bottom: 10px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .row-item input,
+    .row-item select {
+      flex: 1 1 120px;
+      min-width: 110px;
+      padding: 9px 10px;
+      border-radius: 10px;
+      background: rgba(16,17,21,0.9);
+      color: var(--white);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .btn-danger {
+      appearance: none;
+      border: 1px solid rgba(255,59,48,0.4);
+      background: rgba(255,59,48,0.08);
+      color: #ffc1bb;
+      border-radius: 10px;
+      padding: 9px 12px;
+      cursor: pointer;
+      font-weight: 700;
+    }
+
+    .ledger-box {
+      border: 1px solid rgba(216,177,92,0.12);
+      border-radius: 14px;
+      padding: 16px;
+      background: rgba(255,255,255,0.02);
+      transition: box-shadow 0.2s ease, border-color 0.2s ease;
+    }
+
+    .ledger-box.overrun {
+      border-color: rgba(255,59,48,0.4);
+      background: rgba(255,59,48,0.05);
+      box-shadow: 0 0 0 1px rgba(255,59,48,0.08);
+    }
+
+    .ledger-metrics {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .metric-card {
+      text-align: center;
+      background: rgba(0,0,0,0.18);
+      border: 1px solid rgba(255,255,255,0.04);
+      border-radius: 12px;
+      padding: 12px 10px;
+    }
+
+    .metric-card label {
+      display: block;
+      color: var(--muted);
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 8px;
+    }
+
+    .metric-card .value {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--white);
+    }
+
+    .metric-card .value.alert-text {
+      color: var(--crimson-alert);
+    }
+
+    .empty {
+      color: var(--muted);
+      border: 1px dashed rgba(255,255,255,0.08);
+      border-radius: 12px;
+      padding: 14px;
+      background: rgba(255,255,255,0.01);
+      line-height: 1.6;
+    }
+
+    .checklist-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .check-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 12px;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.04);
+    }
+
+    .check-item input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      accent-color: var(--gold2);
+      margin-top: 3px;
+    }
+
+    .check-content {
+      flex: 1;
+    }
+
+    .check-phase {
+      font-size: 0.73rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--gold2);
+      margin-bottom: 4px;
+      font-weight: 700;
+    }
+
+    .saved-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .saved-card {
+      border: 1px solid rgba(216,177,92,0.14);
+      border-radius: 12px;
+      background: rgba(255,255,255,0.02);
+      padding: 12px 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .saved-info strong {
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    .saved-info span {
+      color: var(--muted);
+      font-size: 0.8rem;
+    }
+
+    .saved-actions {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .mini-btn {
+      appearance: none;
+      border-radius: 8px;
+      border: 1px solid rgba(216,177,92,0.2);
+      padding: 7px 9px;
+      background: rgba(255,255,255,0.02);
+      color: var(--white);
+      cursor: pointer;
+    }
+
+    .toast {
+      position: fixed;
+      right: 20px;
+      bottom: 24px;
+      min-width: 200px;
+      max-width: 300px;
+      background: rgba(11,12,15,0.96);
+      border: 1px solid rgba(216,177,92,0.2);
+      color: var(--white);
+      border-radius: 12px;
+      padding: 12px 14px;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity 0.2s ease, transform 0.2s ease;
+      pointer-events: none;
+      box-shadow: 0 18px 28px rgba(0,0,0,0.22);
+      z-index: 90;
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .footer {
+      margin-top: 18px;
+      text-align: center;
+      color: var(--muted);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-size: 0.72rem;
+      padding-bottom: 10px;
+    }
+
+    @media (max-width: 980px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
+      .sidebar {
+        position: static;
+      }
+
+      .panel-grid,
+      .split,
+      .field-grid,
+      .metric-row {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .app { padding: 14px 12px 28px; }
+      .topbar {
+        padding: 14px 15px;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .top-actions {
+        width: 100%;
+        justify-content: stretch;
+      }
+      .top-actions .btn {
+        flex: 1 1 160px;
+      }
+      .hero {
+        padding: 24px 18px 20px;
+      }
+      .hero h1 {
+        max-width: 100%;
+      }
+      .row-item {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .check-item {
+        align-items: flex-start;
+      }
+    }
+
+    @media print {
+      body {
+        background: #fff;
+        color: #171717;
+      }
+      .app {
+        max-width: none;
+        padding: 0;
+      }
+      .topbar,
+      .sidebar,
+      .hero-actions,
+      .footer,
+      .toast,
+      .btn,
+      .btn-danger,
+      .mini-btn,
+      .add-row,
+      .row button,
+      .row select,
+      .side-card,
+      .field input,
+      .field select,
+      .field textarea {
+        display: none !important;
+      }
+      .tab,
+      .panel,
+      .compact-card,
+      .metric,
+      .metric-card,
+      .saved-card,
+      .check-item,
+      .row-item {
+        background: #fff !important;
+        border: 1px solid #d9d9d9 !important;
+        color: #171717 !important;
+      }
+      .section-head h2,
+      .panel h3,
+      .metric strong,
+      .metric-card .value,
+      .overview-title,
+      .check-content,
+      .saved-info strong,
+      .saved-info span,
+      .field label,
+      .subhead,
+      .brand-name,
+      .brand-sub {
+        color: #171717 !important;
+      }
+      .content,
+      .tab {
+        border: none !important;
+        box-shadow: none !important;
+      }
+    }
+  </style>
 </head>
 <body>
-
-<div class="container">
-    <header>
-        <div class="brand-meta">Melodyflow Enterprise</div>
-        <div class="product-title">Birthday Bliss</div>
-        <div class="tagline">Premium Smart Hybrid Celebration Framework</div>
-        <div class="assurance-box">
-            🔒 <strong>Total Privacy Architecture:</strong> Execution operates 100% locally within your secure client cache. Zero server logging. Native real-time autosave enabled with full offline tracking capability.
+  <div class="app" id="birthday-app">
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand-mark">✦</div>
+        <div>
+          <div class="brand-name">BIRTHDAY BLISS</div>
+          <div class="brand-sub">Signature Celebration Planner</div>
         </div>
+      </div>
+      <div class="top-actions">
+        <button class="btn quiet" id="importBtn">↥ Restore backup</button>
+        <button class="btn" id="jsonBtn">↓ Export backup</button>
+        <button class="btn gold" id="saveBtn">Save my plan</button>
+      </div>
     </header>
 
-    <div class="section-card">
-        <div class="section-title">🧬 Celebration Identity & Strategic North Star</div>
-        <div class="form-grid">
-            <div class="field-group">
-                <label>Celebrant Name</label>
-                <input type="text" id="celebrant-name" placeholder="Enter name">
-            </div>
-            <div class="field-group">
-                <label>Adaptive Intelligence Tier</label>
-                <select id="age-tier" onchange="applyAdaptiveIntelligence()">
-                    <option value="toddler">👶🏽 Toddler (Ages 0 - 3)</option>
-                    <option value="kid">🧒🏽 Kid (Ages 4 - 12)</option>
-                    <option value="teen">🧑🏽 Teen (Ages 13 - 19)</option>
-                    <option value="adult" selected>👑 Adult Milestone (Ages 20+)</option>
-                </select>
-            </div>
-            <div class="field-group full-width">
-                <label>Conceptual Philosophy & Mood Objectives</label>
-                <textarea id="strategic-north-star" rows="2" placeholder="Describe the core overarching feeling, theme concept, or design anchor..."></textarea>
-            </div>
-        </div>
-    </div>
+    <section class="hero">
+      <div class="eyebrow">The art of celebrating</div>
+      <h1>Make their day<br><em>unforgettable.</em></h1>
+      <p>A beautifully considered space for every kind of birthday — from a little one's first candle to a once-in-a-lifetime milestone. Plan with intention. Celebrate in style.</p>
+      <div class="hero-actions">
+        <button class="btn gold" id="startPlanning">✦ Start planning</button>
+        <button class="btn" id="pdfBtn">Print / save as PDF</button>
+        <button class="btn" id="newPlan">＋ New celebration</button>
+      </div>
+      <div class="hero-foot"><span class="status-dot"></span> Your plan stays on this device · Export a backup anytime</div>
+    </section>
 
-    <div class="section-card">
-        <div class="section-title">✨ Luxury Design Profiles & Aesthetic Codes</div>
-        <div class="form-grid">
-            <div class="field-group">
-                <label>Primary Premium HEX Accent</label>
-                <input type="text" id="hex-code" placeholder="#D4AF37">
-            </div>
-            <div class="field-group">
-                <label>Celebrant Signature Style Look</label>
-                <input type="text" id="signature-look" placeholder="e.g., Royal Black Velvet Suit / Emerald Evening Gown">
-            </div>
-            <div class="field-group full-width">
-                <label>Guest Mandated Dress Code Guidelines</label>
-                <input type="text" id="dress-code" placeholder="e.g., Ultra-Luxury Monochrome White, Cocktail Formal Elegance">
-            </div>
+    <div class="layout">
+      <aside class="sidebar">
+        <div class="side-title">Your workspace</div>
+        <nav class="nav" aria-label="Planner sections">
+          <button class="active" data-tab="overview"><span class="ico">◈</span> Overview</button>
+          <button data-tab="details"><span class="ico">♕</span> Birthday details</button>
+          <button data-tab="budget"><span class="ico">◉</span> Budget &amp; expenses</button>
+          <button data-tab="guests"><span class="ico">♧</span> Guest list</button>
+          <button data-tab="checklist"><span class="ico">✓</span> Checklist</button>
+          <button data-tab="ideas"><span class="ico">✧</span> Theme &amp; notes</button>
+          <button data-tab="saved"><span class="ico">▣</span> Saved plans</button>
+        </nav>
+        <div class="side-card">
+          <strong>◉ Your plans, your privacy</strong>
+          Drafts are saved in this browser. Download a backup to keep a separate copy or move it to another device.
         </div>
-    </div>
+      </aside>
 
-    <div class="section-card">
-        <div class="section-title">💸 Estimated vs. Actual Financial Matrix</div>
-        <div class="ledger-box" id="ledger-container">
-            <div class="form-grid" style="margin-bottom: 16px;">
-                <div class="field-group">
-                    <label>Target Funding Ceiling Limit (₦ / $)</label>
-                    <input type="number" id="budget-limit" value="500000" oninput="calculateFinancials()">
+      <main class="content">
+        <section class="tab" id="tab-overview">
+          <div class="section-head">
+            <div>
+              <h2>Celebration overview</h2>
+              <div class="muted">A clear view of your plans, priorities, and progress.</div>
+            </div>
+            <span class="pill" id="completionPill">Ready when you are</span>
+          </div>
+
+          <div class="metric-row">
+            <div class="metric">
+              <small>Planned expenses</small>
+              <strong id="metricBudget">₦0</strong>
+              <div class="mini-label">Your current estimate</div>
+            </div>
+            <div class="metric">
+              <small>Guest count</small>
+              <strong id="metricGuests">0</strong>
+              <div class="mini-label">Including confirmed RSVPs</div>
+            </div>
+            <div class="metric">
+              <small>Checklist progress</small>
+              <strong id="metricTasks">0%</strong>
+              <div class="mini-label">Completed tasks</div>
+            </div>
+          </div>
+
+          <div class="panel-grid">
+            <div class="panel">
+              <div class="eyebrow">The guest of honour</div>
+              <h3>Celebration identity</h3>
+              <div class="overview-title" id="overviewTitle">A special day starts with a dream.</div>
+              <p class="overview-text" id="overviewSummary">Add the celebrant’s details and the vibe you want the day to carry. Your summary updates automatically.</p>
+            </div>
+
+            <div class="panel">
+              <h3>Your next best steps</h3>
+              <div class="next-steps" id="nextSteps"></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="tab hidden" id="tab-details">
+          <div class="section-head">
+            <div>
+              <h2>Birthday details</h2>
+              <div class="muted">Start with the person and the feeling you want the day to have.</div>
+            </div>
+          </div>
+
+          <div class="field-grid">
+            <div class="field">
+              <label for="celebrant">Celebrant's name</label>
+              <input id="celebrant" data-field="celebrant" placeholder="e.g. Amara" />
+            </div>
+            <div class="field">
+              <label for="age">Age they're turning</label>
+              <input id="age" data-field="age" type="number" min="0" max="120" placeholder="e.g. 30" />
+            </div>
+            <div class="field">
+              <label for="date">Celebration date</label>
+              <input id="date" data-field="date" type="date" />
+            </div>
+            <div class="field">
+              <label for="startTime">Start time</label>
+              <input id="startTime" data-field="startTime" type="time" />
+            </div>
+            <div class="field">
+              <label for="ageGroup">Age group</label>
+              <select id="ageGroup" data-field="ageGroup">
+                <option value="">Choose age group</option>
+                <option>Baby / toddler (0–3)</option>
+                <option>Child (4–12)</option>
+                <option>Teen (13–19)</option>
+                <option>Adult (20+)</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="partySize">Expected guest count</label>
+              <input id="partySize" data-field="partySize" type="number" min="0" max="100000" placeholder="e.g. 35" />
+            </div>
+            <div class="field">
+              <label for="location">Venue / location</label>
+              <input id="location" data-field="location" placeholder="Home, garden, event hall…" />
+            </div>
+            <div class="field">
+              <label for="style">Celebration style</label>
+              <select id="style" data-field="style">
+                <option value="">Choose a style</option>
+                <option>Simple and intimate</option>
+                <option>Family gathering</option>
+                <option>Garden party</option>
+                <option>Luxury dinner</option>
+                <option>Kids party</option>
+                <option>Theme celebration</option>
+              </select>
+            </div>
+            <div class="field" style="grid-column: 1 / -1;">
+              <label for="purpose">Special wishes &amp; accessibility notes</label>
+              <textarea id="purpose" data-field="purpose" placeholder="Dietary needs, mobility considerations, favorite themes, player and guest requests…"></textarea>
+            </div>
+          </div>
+
+          <div class="split">
+            <div class="compact-card">
+              <h3 class="subhead">Luxury design profiles</h3>
+              <div class="field-grid">
+                <div class="field">
+                  <label for="signature-look">Signature style look</label>
+                  <input id="signatureLook" data-field="signatureLook" placeholder="e.g. Royal black velvet / emerald evening gown" />
                 </div>
+                <div class="field">
+                  <label for="hex-code">Premium accent</label>
+                  <input id="hexCode" data-field="hexCode" placeholder="#D4AF37" />
+                </div>
+                <div class="field" style="grid-column: 1 / -1;">
+                  <label for="dressCode">Guest dress code</label>
+                  <input id="dressCode" data-field="dressCode" placeholder="e.g. Ultra-luxury monochrome white, cocktail formal elegance" />
+                </div>
+              </div>
             </div>
+
+            <div class="compact-card">
+              <h3 class="subhead">Strategic north star</h3>
+              <div class="field">
+                <label for="designBrief">Mood objectives</label>
+                <textarea id="designBrief" data-field="designBrief" placeholder="Describe the main feeling or design anchor for the day."></textarea>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="tab hidden" id="tab-budget">
+          <div class="section-head">
+            <div>
+              <h2>Budget &amp; expenses</h2>
+              <div class="muted">Give every expense a place before the celebration begins.</div>
+            </div>
+            <span class="pill" id="budgetPill">On track</span>
+          </div>
+
+          <div class="ledger-box" id="ledger-container">
+            <div class="field" style="margin-bottom: 16px;">
+              <label for="budgetLimit">Target funding ceiling limit</label>
+              <input id="budgetLimit" data-field="budgetLimit" type="number" min="0" value="500000" />
+            </div>
+
             <div class="ledger-metrics">
-                <div class="metric">
-                    <label>Total Actual Spend</label>
-                    <div class="metric-val" id="total-actual">0</div>
-                </div>
-                <div class="metric">
-                    <label>Remaining Capital Balance</label>
-                    <div class="metric-val" id="remaining-balance">500,000</div>
-                </div>
+              <div class="metric-card">
+                <label>Total actual spend</label>
+                <div class="value" id="totalActual">₦0</div>
+              </div>
+              <div class="metric-card">
+                <label>Remaining balance</label>
+                <div class="value" id="remainingBalance">₦500,000</div>
+              </div>
             </div>
+
             <div id="financial-ledger-rows"></div>
-            <button class="btn btn-secondary" onclick="addLedgerRow()">＋ Append Financial Line Item</button>
-        </div>
-    </div>
-
-    <div class="section-card">
-        <div class="section-title">📊 Active Guest Manifest Control Center</div>
-        <div id="guest-manifest-rows"></div>
-        <button class="btn btn-secondary" onclick="addGuestRow()">＋ Append Guest Profile Line</button>
-    </div>
-
-    <div class="section-card">
-        <div class="section-title">🏢 On-Site Venue Flow Audits</div>
-        <div class="checklist-item">
-            <input type="checkbox" id="flow-arrival">
-            <div class="checklist-text">
-                <div class="checklist-meta">Arrival Footprint</div>
-                Valet lanes, clean signage pathways, and greeting reception check-in desk structure verified.
+            <div class="budget-controls">
+              <button class="btn gold" type="button" onclick="addLedgerRow()">＋ Add line item</button>
             </div>
-        </div>
-        <div class="checklist-item">
-            <input type="checkbox" id="flow-backdrop">
-            <div class="checklist-text">
-                <div class="checklist-meta">Media Backdrop & Lighting</div>
-                Step-and-repeat placement aligned with flash photography vectors and studio illumination paths.
+          </div>
+        </section>
+
+        <section class="tab hidden" id="tab-guests">
+          <div class="section-head">
+            <div>
+              <h2>Guest list</h2>
+              <div class="muted">Keep invitations and replies organized in one place.</div>
             </div>
-        </div>
-        <div class="checklist-item">
-            <input type="checkbox" id="flow-weather">
-            <div class="checklist-text">
-                <div class="checklist-meta">Weather Contingency Channels</div>
-                Tent installations, immediate backup ballroom reservations, or overhead covering systems ready.
+          </div>
+
+          <div id="guestList"></div>
+          <div class="guest-controls">
+            <input id="guestName" placeholder="Guest name" aria-label="Guest name" style="max-width: 250px;" />
+            <input id="guestContact" placeholder="Contact or note" aria-label="Contact or note" style="max-width: 220px;" />
+            <button class="btn gold" type="button" onclick="addGuest()">＋ Add guest</button>
+          </div>
+
+          <div style="margin-top: 18px;">
+            <h3 class="subhead">Manifest control center</h3>
+            <div id="guest-manifest-rows"></div>
+          </div>
+        </section>
+
+        <section class="tab hidden" id="tab-checklist">
+          <div class="section-head">
+            <div>
+              <h2>Planning checklist</h2>
+              <div class="muted">Small steps, beautifully organized. Check tasks off as you go.</div>
             </div>
-        </div>
-    </div>
+          </div>
 
-    <div class="section-card">
-        <div class="section-title">⏱️ 5-Phase Master Adaptive Timeline</div>
-        <div id="adaptive-timeline-container"></div>
-        <button class="btn btn-secondary" onclick="addNewTaskRow()">＋ Append Custom Milestone Tracking Point</button>
-    </div>
+          <div id="taskList"></div>
 
-    <div class="section-card">
-        <div class="section-title">👑 Delegated Day-Of Command Structures</div>
-        <div class="form-grid" style="margin-bottom: 12px;">
-            <div class="field-group">
-                <label>Primary Day-of Lead Advocate</label>
-                <input type="text" id="lead-advocate" placeholder="Name of coordinator/trusted friend">
+          <div class="task-controls" style="margin-top: 16px;">
+            <input id="taskName" placeholder="Add a new task" aria-label="Add a new task" style="max-width: 400px;" />
+            <button class="btn gold" type="button" onclick="addTaskFromInput()">＋ Add task</button>
+            <button class="btn quiet" type="button" onclick="loadStarterTasks()">Use starter checklist</button>
+          </div>
+
+          <div style="margin-top: 18px;">
+            <h3 class="subhead">Adaptive timeline</h3>
+            <div id="adaptive-timeline-container" class="checklist-list"></div>
+          </div>
+        </section>
+
+        <section class="tab hidden" id="tab-ideas">
+          <div class="section-head">
+            <div>
+              <h2>Theme &amp; inspiration</h2>
+              <div class="muted">Gather the little details that make the day feel unmistakably theirs.</div>
             </div>
-        </div>
-        <div id="command-vendor-rows"></div>
-        <button class="btn btn-secondary" onclick="addCommandVendorRow()">＋ Append Crucial Vendor Log Coordinate</button>
+          </div>
+
+          <div class="field-grid">
+            <div class="field">
+              <label for="paletteNotes">Theme, colors &amp; inspiration</label>
+              <textarea id="paletteNotes" data-field="paletteNotes" placeholder="Add your palette, theme mood, color story, and inspiration references."></textarea>
+            </div>
+            <div class="field">
+              <label for="notes">Extra notes</label>
+              <textarea id="notes" data-field="notes" placeholder="Add details for food, music, decor, surprises, and the feeling you want guests to remember."></textarea>
+            </div>
+          </div>
+
+          <div style="margin-top: 18px;">
+            <h3 class="subhead">Day-of command structures</h3>
+            <div class="field" style="margin-bottom: 12px;">
+              <label for="leadAdvocate">Primary day-of lead advocate</label>
+              <input id="leadAdvocate" data-field="leadAdvocate" placeholder="Name of coordinator or trusted friend" />
+            </div>
+            <div id="command-vendor-rows"></div>
+            <div class="vendor-controls">
+              <button class="btn gold" type="button" onclick="addCommandVendorRow()">＋ Add vendor or helper</button>
+            </div>
+          </div>
+
+          <div style="margin-top: 18px;">
+            <h3 class="subhead">Venue flow audits</h3>
+            <div class="checklist-list">
+              <label class="check-item"><input type="checkbox" id="flowArrival" /><div class="check-content"><div class="check-phase">Arrival footprint</div>Valet lanes, signage pathways, and greeting desk structure verified.</div></label>
+              <label class="check-item"><input type="checkbox" id="flowBackdrop" /><div class="check-content"><div class="check-phase">Media backdrop</div>Backdrops, photo vectors, and lighting flows ready for the celebration.</div></label>
+              <label class="check-item"><input type="checkbox" id="flowWeather" /><div class="check-content"><div class="check-phase">Weather contingency</div>Backup options, tents, or indoor alternatives prepared.</div></label>
+            </div>
+          </div>
+        </section>
+
+        <section class="tab hidden" id="tab-saved">
+          <div class="section-head">
+            <div>
+              <h2>Saved celebrations</h2>
+              <div class="muted">Return to a plan, start fresh, or remove an old draft.</div>
+            </div>
+            <button class="btn gold" type="button" id="newPlan2">＋ New celebration</button>
+          </div>
+          <div id="savedList" class="saved-list"></div>
+        </section>
+      </main>
     </div>
 
-    <div class="export-container">
-        <button class="btn" onclick="window.print()">🖨️ Compile & Export Flattened PDF Report</button>
-    </div>
-</div>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <div class="footer">BIRTHDAY BLISS · SIGNATURE CELEBRATION PLANNER · EVERY AGE. EVERY BUDGET. EVERY BIRTHDAY.</div>
+  </div>
 
-<script>
-    const STATE_KEY = 'BIRTHDAY_BLISS_PREMIUM_STATE_V2';
+  <input type="file" id="importFile" accept="application/json" hidden />
 
-    const timelineTemplates = {
+  <script>
+    (function () {
+      const STORAGE_KEY = 'birthdayBlissPlans_v2';
+      const ACTIVE_KEY = 'birthdayBlissActive_v2';
+
+      const timelineTemplates = {
         toddler: [
-            { phase: "Phase 1: 6 Months Out", desc: "Lock child-friendly interactive venues and verify soft-play safety parameters." },
-            { phase: "Phase 3: 1 Month Out", desc: "Confirm toddler safety parameters, baby-proofing adjustments, and high-chair availability thresholds." },
-            { phase: "Phase 4: 1 Week Out", desc: "Finalize pureed food alternatives, smash-cake staging timelines, and nap-schedule blocks." },
-            { phase: "Phase 5: Day Of", desc: "Execute 2-hour duration runtime limits tightly to prevent sensory exhaustion patterns." }
+          { phase: 'Phase 1: 6 Months Out', desc: 'Lock child-friendly interactive venues and verify soft-play safety parameters.' },
+          { phase: 'Phase 3: 1 Month Out', desc: 'Confirm toddler safety parameters, baby-proofing adjustments, and high-chair availability.' },
+          { phase: 'Phase 4: 1 Week Out', desc: 'Finalize pureed food alternatives, smash-cake staging timelines, and nap-schedule blocks.' },
+          { phase: 'Phase 5: Day Of', desc: 'Keep the schedule short and gentle with sensory-safe transitions and easy comfort breaks.' }
         ],
         kid: [
-            { phase: "Phase 1: 6 Months Out", desc: "Retain high-energy experiential venues (Trampoline arenas, active outdoor centers)." },
-            { phase: "Phase 3: 1 Month Out", desc: "Source specialized entertainers, balloon installations, and custom thematic cake fabricators." },
-            { phase: "Phase 4: 1 Week Out", desc: "Finalize safe-zone monitoring layouts and parental relaxation lounge coordinates." },
-            { phase: "Phase 5: Day Of", desc: "Confirm gift logging tables and manage interactive game runtimes cleanly." }
+          { phase: 'Phase 1: 6 Months Out', desc: 'Retain high-energy experiential venues, games, and adventure-friendly spaces.' },
+          { phase: 'Phase 3: 1 Month Out', desc: 'Source entertainers, balloon installations, and a custom cake design.' },
+          { phase: 'Phase 4: 1 Week Out', desc: 'Finalize safe-zone monitoring layouts and parental relaxation lounge details.' },
+          { phase: 'Phase 5: Day Of', desc: 'Confirm gift tables and manage activity runtimes cleanly.' }
         ],
         teen: [
-            { phase: "Phase 1: 6 Months Out", desc: "Determine exclusive trend-forward venue spaces or premium private dining sections." },
-            { phase: "Phase 3: 1 Month Out", desc: "Audit high-end sound system rigs, custom media backdrop channels, and curated music sets." },
-            { phase: "Phase 4: 1 Week Out", desc: "Establish strict teen-privacy parameters while preserving subtle adult oversight lines." },
-            { phase: "Phase 5: Day Of", desc: "Track premium non-alcoholic cocktail bar operations and fast social media photo uploads." }
+          { phase: 'Phase 1: 6 Months Out', desc: 'Determine exclusive trend-forward venue spaces or premium private dining sections.' },
+          { phase: 'Phase 3: 1 Month Out', desc: 'Audit sound system rigs, customized media backdrop channels, and curated playlists.' },
+          { phase: 'Phase 4: 1 Week Out', desc: 'Establish teen-privacy parameters while preserving subtle adult oversight.' },
+          { phase: 'Phase 5: Day Of', desc: 'Track premium mocktail bar operations and fast social-photo upload flows.' }
         ],
         adult: [
-            { phase: "Phase 1: 6 Months Out", desc: "Secure luxury multi-tier private spatial footprints or landmark architectural choices." },
-            { phase: "Phase 2: 3 Months Out", desc: "Finalize multi-course tasting sequences and curate premium champagne pairing logs." },
-            { phase: "Phase 3: 1 Month Out", desc: "Send physical embossed invitations and lock in live ambient instrumentation vendors." },
-            { phase: "Phase 4: 1 Week Out", desc: "Conduct fine dining seating configuration audits and VIP list checkouts." },
-            { phase: "Phase 5: Day Of", desc: "Deploy master schedule timelines to vendor networks cleanly at hour zero." }
+          { phase: 'Phase 1: 6 Months Out', desc: 'Secure a luxury multi-tier venue footprint or landmark architectural choice.' },
+          { phase: 'Phase 2: 3 Months Out', desc: 'Finalize multi-course tasting sequences and premium champagne pairing logs.' },
+          { phase: 'Phase 3: 1 Month Out', desc: 'Send physical embossed invitations and lock live ambient instrumentation vendors.' },
+          { phase: 'Phase 4: 1 Week Out', desc: 'Conduct fine dining seating configuration audits and VIP list checkouts.' },
+          { phase: 'Phase 5: Day Of', desc: 'Deploy the master schedule to the vendor network cleanly at hour zero.' }
         ]
-    };
+      };
 
-    let appState = {
-        meta: {},
-        ledger: [
-            { name: "Luxury Spatial Venue Lease", estimated: 250000, actual: 270000 },
-            { name: "Premium Bespoke Catering Flow", estimated: 150000, actual: 140000 }
+      const $ = (id) => document.getElementById(id);
+      const uid = () => Date.now().toString(36) + Math.random().toString(36).slice(2, 7);
+
+      const blankPlan = () => ({
+        id: uid(),
+        title: 'Untitled birthday plan',
+        createdAt: new Date().toISOString(),
+        updatedAt: new Date().toISOString(),
+        celebrant: '',
+        age: '',
+        date: '',
+        startTime: '',
+        ageGroup: '',
+        partySize: '',
+        location: '',
+        style: '',
+        purpose: '',
+        hexCode: '#D4AF37',
+        signatureLook: '',
+        dressCode: '',
+        designBrief: '',
+        paletteNotes: '',
+        notes: '',
+        leadAdvocate: '',
+        budgetLimit: 500000,
+        currency: 'NGN',
+        expenses: [
+          { id: uid(), name: 'Venue lease', amount: 0 },
+          { id: uid(), name: 'Catering & cake', amount: 0 }
         ],
         guests: [
-            { name: "Alexander Sterling", rsvp: "confirmed", notes: "Peanut Allergy", gift: "Pending", thankYou: false }
+          { id: uid(), name: 'Alex Sterling', contact: 'Peanut allergy', status: 'confirmed' }
         ],
-        customTasks: [],
+        tasks: [
+          { id: uid(), name: 'Choose a date and venue', done: false },
+          { id: uid(), name: 'Set a realistic budget', done: false },
+          { id: uid(), name: 'Create the guest list', done: false }
+        ],
+        ledger: [
+          { name: 'Luxury spatial venue lease', estimated: 250000, actual: 270000 },
+          { name: 'Premium bespoke catering flow', estimated: 150000, actual: 140000 }
+        ],
+        guestManifest: [
+          { name: 'Alexander Sterling', rsvp: 'confirmed', notes: 'Peanut allergy', gift: 'Pending', thankYou: false }
+        ],
         vendors: [
-            { assignment: "Bespoke Mixology Lead", identity: "Exquisite Bars Ltd.", contact: "+2348011223344" }
-        ]
-    };
+          { assignment: 'Bespoke mixology lead', identity: 'Exquisite Bars Ltd.', contact: '+2348011223344' }
+        ],
+        timelineChecks: {},
+        timelineCustom: ['New specialized custom action metric...'],
+        flowArrival: false,
+        flowBackdrop: false,
+        flowWeather: false
+      });
 
-    window.addEventListener('DOMContentLoaded', () => {
-        loadState();
-        calculateFinancials();
-        renderGuests();
-        renderVendors();
-        attachAutosaveListeners();
-    });
+      let plans = [];
+      let activeId = null;
+      let plan = blankPlan();
 
-    function attachAutosaveListeners() {
-        document.querySelectorAll('input, select, textarea').forEach(el => {
-            el.addEventListener('input', saveState);
-        });
-    }
+      function toast(msg) {
+        const t = $('toast');
+        t.textContent = msg;
+        t.classList.add('show');
+        clearTimeout(toast.timer);
+        toast.timer = setTimeout(() => t.classList.remove('show'), 2600);
+      }
 
-    function saveState() {
-        appState.meta.name = document.getElementById('celebrant-name').value;
-        appState.meta.ageTier = document.getElementById('age-tier').value;
-        appState.meta.northStar = document.getElementById('strategic-north-star').value;
-        appState.meta.hexCode = document.getElementById('hex-code').value;
-        appState.meta.signatureLook = document.getElementById('signature-look').value;
-        appState.meta.dressCode = document.getElementById('dress-code').value;
-        appState.meta.budgetLimit = document.getElementById('budget-limit').value;
-        appState.meta.leadAdvocate = document.getElementById('lead-advocate').value;
-        appState.meta.flowArrival = document.getElementById('flow-arrival').checked;
-        appState.meta.flowBackdrop = document.getElementById('flow-backdrop').checked;
-        appState.meta.flowWeather = document.getElementById('flow-weather').checked;
-
-        appState.meta.taskChecks = {};
-        document.querySelectorAll('.task-check-input').forEach(chk => {
-            appState.meta.taskChecks[chk.dataset.taskid] = chk.checked;
-        });
-
-        localStorage.setItem(STATE_KEY, JSON.stringify(appState));
-    }
-
-    function loadState() {
-        const stored = localStorage.getItem(STATE_KEY);
-        if (stored) {
-            try {
-                const parsed = JSON.parse(stored);
-                if(parsed.ledger) appState.ledger = parsed.ledger;
-                if(parsed.guests) appState.guests = parsed.guests;
-                if(parsed.customTasks) appState.customTasks = parsed.customTasks;
-                if(parsed.vendors) appState.vendors = parsed.vendors;
-                if(parsed.meta) appState.meta = parsed.meta;
-
-                document.getElementById('celebrant-name').value = appState.meta.name || '';
-                document.getElementById('age-tier').value = appState.meta.ageTier || 'adult';
-                document.getElementById('strategic-north-star').value = appState.meta.northStar || '';
-                document.getElementById('hex-code').value = appState.meta.hexCode || '';
-                document.getElementById('signature-look').value = appState.meta.signatureLook || '';
-                document.getElementById('dress-code').value = appState.meta.dressCode || '';
-                document.getElementById('budget-limit').value = appState.meta.budgetLimit !== undefined ? appState.meta.budgetLimit : 500000;
-                document.getElementById('lead-advocate').value = appState.meta.leadAdvocate || '';
-                document.getElementById('flow-arrival').checked = !!appState.meta.flowArrival;
-                document.getElementById('flow-backdrop').checked = !!appState.meta.flowBackdrop;
-                document.getElementById('flow-weather').checked = !!appState.meta.flowWeather;
-            } catch (e) { console.error("Error loading state cache", e); }
+      function money(value) {
+        try {
+          return new Intl.NumberFormat(undefined, {
+            style: 'currency',
+            currency: plan.currency || 'NGN',
+            maximumFractionDigits: 0
+          }).format(Number(value) || 0);
+        } catch (e) {
+          return (Number(value) || 0).toLocaleString();
         }
-        applyAdaptiveIntelligence(false);
-    }
+      }
 
-    function applyAdaptiveIntelligence(triggerSave = true) {
-        const selectedTier = document.getElementById('age-tier').value;
-        const container = document.getElementById('adaptive-timeline-container');
-        container.innerHTML = '';
+      function loadAll() {
+        try {
+          plans = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+          if (!Array.isArray(plans)) plans = [];
+        } catch (e) {
+          plans = [];
+        }
 
-        const template = timelineTemplates[selectedTier] || timelineTemplates.adult;
-        const checks = appState.meta.taskChecks || {};
-
-        template.forEach((item, index) => {
-            const checkedAttr = checks[`tpl-${index}`] ? 'checked' : '';
-            container.appendChild(createTaskElement(`tpl-${index}`, item.phase, item.desc, checkedAttr));
-        });
-
-        appState.customTasks.forEach((item, index) => {
-            const checkedAttr = checks[`custom-${index}`] ? 'checked' : '';
-            container.appendChild(createTaskElement(`custom-${index}`, "Custom Milestone", item, checkedAttr, true, index));
-        });
-
-        if (triggerSave) saveState();
-    }
-
-    function createTaskElement(id, phase, desc, checkedAttr, isCustom = false, index = 0) {
-        const div = document.createElement('div');
-        div.className = 'checklist-item';
-        div.innerHTML = `
-            <input type="checkbox" class="task-check-input" data-taskid="${id}" ${checkedAttr} onchange="saveState()">
-            <div class="checklist-text">
-                <div class="checklist-meta">${phase}</div>
-                ${isCustom ? `<input type="text" value="${desc}" style="font-size:13px; padding:4px;" oninput="updateCustomTask(${index}, this.value)">` : desc}
-            </div>
-            ${isCustom ? `<button class="btn-danger" style="padding: 2px 6px; font-size:10px;" onclick="removeCustomTask(${index})">✕</button>` : ''}
-        `;
-        return div;
-    }
-
-    function addNewTaskRow() {
-        appState.customTasks.push("New specialized custom action metric...");
-        applyAdaptiveIntelligence();
-    }
-
-    function updateCustomTask(index, val) {
-        appState.customTasks[index] = val;
-        saveState();
-    }
-
-    function removeCustomTask(index) {
-        appState.customTasks.splice(index, 1);
-        applyAdaptiveIntelligence();
-    }
-
-    function renderLedger() {
-        const container = document.getElementById('financial-ledger-rows');
-        container.innerHTML = '';
-        appState.ledger.forEach((item, idx) => {
-            const div = document.createElement('div');
-            div.className = 'row-item';
-            div.innerHTML = `
-                <input type="text" value="${item.name}" placeholder="Expense Classification" oninput="updateLedgerItem(${idx}, 'name', this.value)">
-                <input type="number" value="${item.estimated}" placeholder="Est. Cost" style="max-width:90px;" oninput="updateLedgerItem(${idx}, 'estimated', this.value)">
-                <input type="number" value="${item.actual}" placeholder="Act. Spend" style="max-width:90px;" oninput="updateLedgerItem(${idx}, 'actual', this.value)">
-                <button class="btn-danger" onclick="removeLedgerItem(${idx})">✕</button>
-            `;
-            container.appendChild(div);
-        });
-    }
-
-    function addLedgerRow() {
-        appState.ledger.push({ name: '', estimated: 0, actual: 0 });
-        calculateFinancials();
-    }
-
-    function updateLedgerItem(idx, field, val) {
-        appState.ledger[idx][field] = field === 'name' ? val : parseFloat(val) || 0;
-        calculateFinancials();
-    }
-
-    function removeLedgerItem(idx) {
-        appState.ledger.splice(idx, 1);
-        calculateFinancials();
-    }
-
-    function calculateFinancials() {
-        renderLedger();
-        const limit = parseFloat(document.getElementById('budget-limit').value) || 0;
-        let totalActual = 0;
-
-        appState.ledger.forEach(item => { totalActual += item.actual; });
-
-        const remaining = limit - totalActual;
-        const totalActualEl = document.getElementById('total-actual');
-        const remainingBalanceEl = document.getElementById('remaining-balance');
-        const ledgerContainer = document.getElementById('ledger-container');
-
-        totalActualEl.innerText = totalActual.toLocaleString();
-        remainingBalanceEl.innerText = remaining.toLocaleString();
-
-        if (totalActual > limit) {
-            ledgerContainer.classList.add('overrun');
-            totalActualEl.classList.add('alert-text');
+        activeId = localStorage.getItem(ACTIVE_KEY) || null;
+        if (plans.length) {
+          plan = plans.find((p) => p.id === activeId) || plans[plans.length - 1];
         } else {
-            ledgerContainer.classList.remove('overrun');
-            totalActualEl.classList.remove('alert-text');
+          plan = blankPlan();
+          plans.push(plan);
+          activeId = plan.id;
         }
-        saveState();
-    }
 
-    function renderGuests() {
-        const container = document.getElementById('guest-manifest-rows');
-        container.innerHTML = '';
-        appState.guests.forEach((guest, idx) => {
-            const div = document.createElement('div');
-            div.className = 'row-item';
-            div.innerHTML = `
-                <input type="text" value="${guest.name}" placeholder="Guest Full Name" oninput="updateGuestItem(${idx}, 'name', this.value)">
-                <select onchange="updateGuestItem(${idx}, 'rsvp', this.value)" style="max-width:115px;">
-                    <option value="pending" ${guest.rsvp === 'pending' ? 'selected' : ''}>⏳ Pending</option>
-                    <option value="confirmed" ${guest.rsvp === 'confirmed' ? 'selected' : ''}>✅ Confirmed</option>
-                    <option value="declined" ${guest.rsvp === 'declined' ? 'selected' : ''}>✕ Declined</option>
-                </select>
-                <input type="text" value="${guest.notes}" placeholder="Dietary/Allergies" oninput="updateGuestItem(${idx}, 'notes', this.value)">
-                <input type="text" value="${guest.gift || ''}" placeholder="Gift Logging" style="max-width:90px;" oninput="updateGuestItem(${idx}, 'gift', this.value)">
-                <select onchange="updateGuestItem(${idx}, 'thankYou', this.value === 'true')" style="max-width:90px;">
-                    <option value="false" ${!guest.thankYou ? 'selected' : ''}>Unsent</option>
-                    <option value="true" ${guest.thankYou ? 'selected' : ''}>Thanked</option>
-                </select>
-                <button class="btn-danger" onclick="removeGuestItem(${idx})">✕</button>
-            `;
-            container.appendChild(div);
+        if (!plan) {
+          plan = blankPlan();
+          plans.push(plan);
+          activeId = plan.id;
+        }
+
+        if (!plan.ledger) plan.ledger = [];
+        if (!plan.guestManifest) plan.guestManifest = [];
+        if (!plan.vendors) plan.vendors = [];
+        if (!plan.timelineChecks) plan.timelineChecks = {};
+        if (!plan.timelineCustom) plan.timelineCustom = [];
+        if (!plan.expenses) plan.expenses = [];
+        if (!plan.tasks) plan.tasks = [];
+
+        hydrate();
+        renderAll();
+      }
+
+      function persist(silent = true) {
+        if (!plan) return;
+        plan.updatedAt = new Date().toISOString();
+        plan.title = plan.celebrant ? `${plan.celebrant}'s birthday` : 'Untitled birthday plan';
+
+        const idx = plans.findIndex((p) => p.id === plan.id);
+        if (idx >= 0) {
+          plans[idx] = plan;
+        } else {
+          plans.push(plan);
+        }
+
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(plans));
+        if (activeId) localStorage.setItem(ACTIVE_KEY, activeId);
+
+        if (!silent) toast('Plan saved');
+      }
+
+      function hydrate() {
+        document.querySelectorAll('[data-field]').forEach((el) => {
+          const key = el.dataset.field;
+          if (key in plan) {
+            if (el.type === 'checkbox') {
+              el.checked = !!plan[key];
+            } else {
+              el.value = plan[key] ?? '';
+            }
+          } else {
+            el.value = '';
+          }
         });
-    }
 
-    function addGuestRow() {
-        appState.guests.push({ name: '', rsvp: 'pending', notes: '', gift: '', thankYou: false });
-        renderGuests();
-        saveState();
-    }
+        $('budgetLimit').value = plan.budgetLimit ?? 500000;
+        $('leadAdvocate').value = plan.leadAdvocate || '';
+        $('flowArrival').checked = !!plan.flowArrival;
+        $('flowBackdrop').checked = !!plan.flowBackdrop;
+        $('flowWeather').checked = !!plan.flowWeather;
 
-    function updateGuestItem(idx, field, val) {
-        appState.guests[idx][field] = val;
-        saveState();
-    }
+        applyAdaptiveIntelligence(false);
+        renderLedger();
+        renderGuestManifest();
+        renderVendors();
+      }
 
-    function removeGuestItem(idx) {
-        appState.guests.splice(idx, 1);
-        renderGuests();
-        saveState();
-    }
+      function switchTab(tab) {
+        document.querySelectorAll('.tab').forEach((x) => x.classList.toggle('hidden', x.id !== 'tab-' + tab));
+        document.querySelectorAll('.nav button').forEach((x) => x.classList.toggle('active', x.dataset.tab === tab));
+      }
 
-    function renderVendors() {
-        const container = document.getElementById('command-vendor-rows');
-        container.innerHTML = '';
-        appState.vendors.forEach((vendor, idx) => {
-            const div = document.createElement('div');
-            div.className = 'row-item';
-            div.innerHTML = `
-                <input type="text" value="${vendor.assignment}" placeholder="Assignment (e.g., DJ / Cake)" oninput="updateVendorItem(${idx}, 'assignment', this.value)">
-                <input type="text" value="${vendor.identity}" placeholder="Vendor Firm Identity" oninput="updateVendorItem(${idx}, 'identity', this.value)">
-                <input type="text" value="${vendor.contact}" placeholder="Tracking Phone / Coordinates" oninput="updateVendorItem(${idx}, 'contact', this.value)">
-                <button class="btn-danger" onclick="removeVendorItem(${idx})">✕</button>
-            `;
-            container.appendChild(div);
+      function updatePlanFromInputs() {
+        document.querySelectorAll('[data-field]').forEach((el) => {
+          const key = el.dataset.field;
+          if (!(key in plan)) return;
+          if (el.type === 'number' || el.type === 'date' || el.type === 'time') {
+            plan[key] = el.value;
+          } else if (el.type === 'checkbox') {
+            plan[key] = el.checked;
+          } else {
+            plan[key] = el.value;
+          }
         });
-    }
 
-    function addCommandVendorRow() {
-        appState.vendors.push({ assignment: '', identity: '', contact: '' });
+        plan.budgetLimit = Number($('budgetLimit').value) || 0;
+        plan.leadAdvocate = $('leadAdvocate').value;
+        plan.flowArrival = $('flowArrival').checked;
+        plan.flowBackdrop = $('flowBackdrop').checked;
+        plan.flowWeather = $('flowWeather').checked;
+      }
+
+      function renderOverview() {
+        const total = (plan.expenses || []).reduce((s, e) => s + (Number(e.amount) || 0), 0);
+        const done = (plan.tasks || []).filter((t) => t.done).length;
+        const tasks = (plan.tasks || []).length || 1;
+        const guestCount = (plan.guests || []).length;
+        const confirmed = (plan.guests || []).filter((g) => (g.status || '').toLowerCase() === 'confirmed').length;
+
+        $('metricBudget').textContent = money(total);
+        $('metricGuests').textContent = String(guestCount || confirmed || 0);
+        $('metricTasks').textContent = `${Math.round((done / tasks) * 100)}%`;
+
+        const name = plan.celebrant || 'Your celebrant';
+        const age = plan.age ? ` turning ${plan.age}` : '';
+        const styleText = plan.style ? ` • ${plan.style}` : '';
+        $('overviewTitle').textContent = `${name}${age}` || 'A special day starts with a dream.';
+        $('overviewSummary').textContent = `${plan.designBrief || 'A beautifully considered celebration rooted in joy, ease, and meaningful details.'}${styleText}`;
+
+        const nextSteps = [];
+        if (!plan.date) nextSteps.push('Pick the celebration date and lock the venue before finalizing your guest list.');
+        if (!plan.budgetLimit || Number(plan.budgetLimit) <= 0) nextSteps.push('Set a realistic budget ceiling and map your main costs.');
+        if (!(plan.guests || []).length) nextSteps.push('Start your guest list with the must-have people and confirm the list size.');
+        if (!plan.paletteNotes && !plan.notes) nextSteps.push('Capture the theme, colors, and little details that make the celebration feel personal.');
+        if (!nextSteps.length) nextSteps.push('Your plan is taking shape — keep checking off priorities and your celebration will feel effortless.');
+
+        const stepsHtml = nextSteps.slice(0, 3).map((step) => `
+          <div class="step">
+            <span class="dot"></span>
+            <span>${step}</span>
+          </div>
+        `).join('');
+        $('nextSteps').innerHTML = stepsHtml;
+
+        const completion = Math.min(100, Math.round(((done / tasks) * 100 + (guestCount ? 10 : 0)) / 1.1));
+        $('completionPill').textContent = completion >= 70 ? 'Almost there' : completion >= 40 ? 'In motion' : 'Ready when you are';
+      }
+
+      function renderBudgetList() {
+        const list = $('financial-ledger-rows');
+        list.innerHTML = '';
+        if (!(plan.expenses || []).length) {
+          list.innerHTML = '<div class="empty">No expenses yet. Start with your venue, food, cake, or decorations.</div>';
+          return;
+        }
+
+        (plan.expenses || []).forEach((item, idx) => {
+          const row = document.createElement('div');
+          row.className = 'row-item';
+          row.innerHTML = `
+            <input type="text" value="${item.name || ''}" placeholder="Expense name" onchange="updateExpense(${idx}, 'name', this.value)">
+            <input type="number" value="${Number(item.amount) || 0}" placeholder="Amount" onchange="updateExpense(${idx}, 'amount', Number(this.value) || 0)">
+            <button class="btn-danger" type="button" onclick="removeExpense(${idx})">✕</button>
+          `;
+          list.appendChild(row);
+        });
+      }
+
+      function renderGuestList() {
+        const list = $('guestList');
+        list.innerHTML = '';
+        if (!(plan.guests || []).length) {
+          list.innerHTML = '<div class="empty">Your guest list begins here. Add a name below to get started.</div>';
+          return;
+        }
+
+        (plan.guests || []).forEach((guest, idx) => {
+          const row = document.createElement('div');
+          row.className = 'row-item';
+          row.innerHTML = `
+            <input type="text" value="${guest.name || ''}" placeholder="Guest name" onchange="updateGuest(${idx}, 'name', this.value)">
+            <input type="text" value="${guest.contact || ''}" placeholder="Contact / note" onchange="updateGuest(${idx}, 'contact', this.value)">
+            <select onchange="updateGuest(${idx}, 'status', this.value)">
+              <option value="pending" ${guest.status === 'pending' ? 'selected' : ''}>Pending</option>
+              <option value="confirmed" ${guest.status === 'confirmed' ? 'selected' : ''}>Confirmed</option>
+              <option value="declined" ${guest.status === 'declined' ? 'selected' : ''}>Declined</option>
+            </select>
+            <button class="btn-danger" type="button" onclick="removeGuest(${idx})">✕</button>
+          `;
+          list.appendChild(row);
+        });
+      }
+
+      function renderTaskList() {
+        const list = $('taskList');
+        list.innerHTML = '';
+        if (!(plan.tasks || []).length) {
+          list.innerHTML = '<div class="empty">A little preparation goes a long way. Add a task to get started.</div>';
+          return;
+        }
+
+        (plan.tasks || []).forEach((task, idx) => {
+          const item = document.createElement('div');
+          item.className = 'check-item';
+          item.innerHTML = `
+            <input type="checkbox" ${task.done ? 'checked' : ''} onchange="toggleTask(${idx}, this.checked)">
+            <div class="check-content">
+              <div class="check-phase">Task</div>
+              <div>${task.name}</div>
+            </div>
+            <button class="btn-danger" type="button" onclick="removeTask(${idx})">✕</button>
+          `;
+          list.appendChild(item);
+        });
+      }
+
+      function renderSaved() {
+        const list = $('savedList');
+        list.innerHTML = '';
+        if (!plans.length) {
+          list.innerHTML = '<div class="empty">No saved celebrations yet. Start a plan and save it to see it here.</div>';
+          return;
+        }
+
+        plans.forEach((entry) => {
+          const card = document.createElement('div');
+          card.className = 'saved-card';
+          card.innerHTML = `
+            <div class="saved-info">
+              <strong>${entry.title || 'Untitled celebration'}</strong>
+              <span>${entry.date || 'No date chosen'} • ${entry.celebrant || 'No celebrant named'}</span>
+            </div>
+            <div class="saved-actions">
+              <button class="mini-btn" type="button" onclick="loadSavedPlan('${entry.id}')">Open</button>
+              <button class="mini-btn" type="button" onclick="deleteSavedPlan('${entry.id}')">Delete</button>
+            </div>
+          `;
+          list.appendChild(card);
+        });
+      }
+
+      function renderLedger() {
+        const container = $('financial-ledger-rows');
+        container.innerHTML = '';
+        if (!(plan.ledger || []).length) {
+          container.innerHTML = '<div class="empty">No line items added yet.</div>';
+          return;
+        }
+
+        (plan.ledger || []).forEach((item, idx) => {
+          const row = document.createElement('div');
+          row.className = 'row-item';
+          row.innerHTML = `
+            <input type="text" value="${item.name || ''}" placeholder="Expense classification" oninput="updateLedgerItem(${idx}, 'name', this.value)">
+            <input type="number" value="${Number(item.estimated) || 0}" placeholder="Est. cost" style="max-width: 110px;" oninput="updateLedgerItem(${idx}, 'estimated', Number(this.value) || 0)">
+            <input type="number" value="${Number(item.actual) || 0}" placeholder="Actual spend" style="max-width: 110px;" oninput="updateLedgerItem(${idx}, 'actual', Number(this.value) || 0)">
+            <button class="btn-danger" type="button" onclick="removeLedgerItem(${idx})">✕</button>
+          `;
+          container.appendChild(row);
+        });
+
+        calculateFinancials();
+      }
+
+      function renderGuestManifest() {
+        const container = $('guest-manifest-rows');
+        container.innerHTML = '';
+        if (!(plan.guestManifest || []).length) {
+          container.innerHTML = '<div class="empty">Manifest is empty. Add a guest profile to track RSVP and details.</div>';
+          return;
+        }
+
+        (plan.guestManifest || []).forEach((guest, idx) => {
+          const row = document.createElement('div');
+          row.className = 'row-item';
+          row.innerHTML = `
+            <input type="text" value="${guest.name || ''}" placeholder="Guest full name" oninput="updateGuestManifest(${idx}, 'name', this.value)">
+            <select onchange="updateGuestManifest(${idx}, 'rsvp', this.value)">
+              <option value="pending" ${guest.rsvp === 'pending' ? 'selected' : ''}>Pending</option>
+              <option value="confirmed" ${guest.rsvp === 'confirmed' ? 'selected' : ''}>Confirmed</option>
+              <option value="declined" ${guest.rsvp === 'declined' ? 'selected' : ''}>Declined</option>
+            </select>
+            <input type="text" value="${guest.notes || ''}" placeholder="Dietary / allergies" oninput="updateGuestManifest(${idx}, 'notes', this.value)">
+            <input type="text" value="${guest.gift || ''}" placeholder="Gift logging" style="max-width: 118px;" oninput="updateGuestManifest(${idx}, 'gift', this.value)">
+            <select onchange="updateGuestManifest(${idx}, 'thankYou', this.value === 'true')" style="max-width: 110px;">
+              <option value="false" ${!guest.thankYou ? 'selected' : ''}>Unsent</option>
+              <option value="true" ${guest.thankYou ? 'selected' : ''}>Thanked</option>
+            </select>
+            <button class="btn-danger" type="button" onclick="removeGuestManifest(${idx})">✕</button>
+          `;
+          container.appendChild(row);
+        });
+      }
+
+      function renderVendors() {
+        const container = $('command-vendor-rows');
+        container.innerHTML = '';
+        if (!(plan.vendors || []).length) {
+          container.innerHTML = '<div class="empty">No vendor or helper assigned yet.</div>';
+          return;
+        }
+
+        (plan.vendors || []).forEach((vendor, idx) => {
+          const row = document.createElement('div');
+          row.className = 'row-item';
+          row.innerHTML = `
+            <input type="text" value="${vendor.assignment || ''}" placeholder="Assignment (e.g. DJ / Cake)" oninput="updateVendorItem(${idx}, 'assignment', this.value)">
+            <input type="text" value="${vendor.identity || ''}" placeholder="Vendor firm identity" oninput="updateVendorItem(${idx}, 'identity', this.value)">
+            <input type="text" value="${vendor.contact || ''}" placeholder="Tracking phone / coordinates" oninput="updateVendorItem(${idx}, 'contact', this.value)">
+            <button class="btn-danger" type="button" onclick="removeVendorItem(${idx})">✕</button>
+          `;
+          container.appendChild(row);
+        });
+      }
+
+      function applyAdaptiveIntelligence(triggerSave = true) {
+        const selected = $('ageGroup') ? $('ageGroup').value : (plan.ageGroup || 'adult');
+        const container = $('adaptive-timeline-container');
+        if (!container) return;
+
+        container.innerHTML = '';
+        const chosen = (selected || 'adult').toLowerCase();
+        const choices = timelineTemplates[chosen] || timelineTemplates.adult;
+        const checks = plan.timelineChecks || {};
+
+        choices.forEach((item, index) => {
+          const checked = checks[`tpl-${index}`] ? 'checked' : '';
+          const row = document.createElement('label');
+          row.className = 'check-item';
+          row.innerHTML = `
+            <input type="checkbox" class="task-check-input" data-taskid="tpl-${index}" ${checked} onchange="saveTimelineCheck('tpl-${index}', this.checked)">
+            <div class="check-content">
+              <div class="check-phase">${item.phase}</div>
+              <div>${item.desc}</div>
+            </div>
+          `;
+          container.appendChild(row);
+        });
+
+        (plan.timelineCustom || []).forEach((item, index) => {
+          const checked = checks[`custom-${index}`] ? 'checked' : '';
+          const row = document.createElement('div');
+          row.className = 'check-item';
+          row.innerHTML = `
+            <input type="checkbox" class="task-check-input" data-taskid="custom-${index}" ${checked} onchange="saveTimelineCheck('custom-${index}', this.checked)">
+            <div class="check-content">
+              <div class="check-phase">Custom milestone</div>
+              <input type="text" value="${item}" style="background: transparent; border: none; color: var(--white); font: inherit; padding: 0; width: 100%;" oninput="updateCustomTask(${index}, this.value)">
+            </div>
+            <button class="btn-danger" type="button" onclick="removeCustomTask(${index})">✕</button>
+          `;
+          container.appendChild(row);
+        });
+
+        if (triggerSave) persist();
+      }
+
+      function saveTimelineCheck(id, checked) {
+        plan.timelineChecks = plan.timelineChecks || {};
+        plan.timelineChecks[id] = !!checked;
+        persist();
+      }
+
+      function updateCustomTask(index, value) {
+        plan.timelineCustom[index] = value;
+        persist();
+      }
+
+      function removeCustomTask(index) {
+        plan.timelineCustom.splice(index, 1);
+        applyAdaptiveIntelligence();
+      }
+
+      function addNewTaskRow() {
+        if (!plan.timelineCustom) plan.timelineCustom = [];
+        plan.timelineCustom.push('New specialized custom action metric...');
+        applyAdaptiveIntelligence();
+      }
+
+      function addLedgerRow() {
+        if (!plan.ledger) plan.ledger = [];
+        plan.ledger.push({ name: '', estimated: 0, actual: 0 });
+        renderLedger();
+        persist();
+      }
+
+      function updateLedgerItem(index, field, value) {
+        if (!plan.ledger[index]) return;
+        plan.ledger[index][field] = value;
+        calculateFinancials();
+        persist();
+      }
+
+      function removeLedgerItem(index) {
+        plan.ledger.splice(index, 1);
+        renderLedger();
+        persist();
+      }
+
+      function calculateFinancials() {
+        const limit = Number(plan.budgetLimit || $('budgetLimit').value || 0);
+        let totalActual = 0;
+        (plan.ledger || []).forEach((item) => { totalActual += Number(item.actual) || 0; });
+        const remaining = limit - totalActual;
+
+        $('totalActual').textContent = money(totalActual);
+        $('remainingBalance').textContent = money(remaining);
+
+        const container = $('ledger-container');
+        if (totalActual > limit) {
+          container.classList.add('overrun');
+          $('totalActual').classList.add('alert-text');
+          $('remainingBalance').classList.add('alert-text');
+          $('budgetPill').textContent = 'Over budget';
+        } else {
+          container.classList.remove('overrun');
+          $('totalActual').classList.remove('alert-text');
+          $('remainingBalance').classList.remove('alert-text');
+          $('budgetPill').textContent = remaining >= 0 ? 'On track' : 'Review costs';
+        }
+      }
+
+      function addGuest() {
+        const name = $('guestName').value.trim();
+        const contact = $('guestContact').value.trim();
+        if (!name) {
+          toast('Enter a guest name first.');
+          return;
+        }
+        if (!plan.guests) plan.guests = [];
+        plan.guests.push({ id: uid(), name, contact, status: 'pending' });
+        $('guestName').value = '';
+        $('guestContact').value = '';
+        if (!plan.guestManifest) plan.guestManifest = [];
+        plan.guestManifest.push({ name, rsvp: 'pending', notes: contact, gift: '', thankYou: false });
+        renderGuestList();
+        renderGuestManifest();
+        renderOverview();
+        persist();
+      }
+
+      function updateGuest(index, field, value) {
+        if (!plan.guests[index]) return;
+        plan.guests[index][field] = value;
+        if (plan.guestManifest[index]) {
+          if (field === 'name') plan.guestManifest[index].name = value;
+          if (field === 'contact') plan.guestManifest[index].notes = value;
+          if (field === 'status') plan.guestManifest[index].rsvp = value;
+        }
+        renderOverview();
+        persist();
+      }
+
+      function removeGuest(index) {
+        plan.guests.splice(index, 1);
+        if (plan.guestManifest && plan.guestManifest[index]) plan.guestManifest.splice(index, 1);
+        renderGuestList();
+        renderGuestManifest();
+        renderOverview();
+        persist();
+      }
+
+      function updateGuestManifest(index, field, value) {
+        if (!plan.guestManifest[index]) return;
+        plan.guestManifest[index][field] = value;
+        if (field === 'rsvp' && plan.guests[index]) {
+          plan.guests[index].status = value;
+        }
+        renderGuestList();
+        renderOverview();
+        persist();
+      }
+
+      function removeGuestManifest(index) {
+        plan.guestManifest.splice(index, 1);
+        if (plan.guests[index]) plan.guests.splice(index, 1);
+        renderGuestList();
+        renderGuestManifest();
+        renderOverview();
+        persist();
+      }
+
+      function addExpense(name = '', amount = 0) {
+        if (!plan.expenses) plan.expenses = [];
+        plan.expenses.push({ id: uid(), name, amount });
+        renderBudgetList();
+        renderOverview();
+        persist();
+      }
+
+      function updateExpense(index, field, value) {
+        if (!plan.expenses[index]) return;
+        plan.expenses[index][field] = value;
+        renderOverview();
+        persist();
+      }
+
+      function removeExpense(index) {
+        plan.expenses.splice(index, 1);
+        renderBudgetList();
+        renderOverview();
+        persist();
+      }
+
+      function addTask(name) {
+        if (!plan.tasks) plan.tasks = [];
+        if (!name || !name.trim()) return;
+        plan.tasks.push({ id: uid(), name: name.trim(), done: false });
+        renderTaskList();
+        renderOverview();
+        persist();
+      }
+
+      function addTaskFromInput() {
+        const val = $('taskName').value.trim();
+        if (!val) {
+          toast('Add a task name first.');
+          return;
+        }
+        $('taskName').value = '';
+        addTask(val);
+      }
+
+      function toggleTask(index, checked) {
+        if (!plan.tasks[index]) return;
+        plan.tasks[index].done = checked;
+        renderOverview();
+        persist();
+      }
+
+      function removeTask(index) {
+        plan.tasks.splice(index, 1);
+        renderTaskList();
+        renderOverview();
+        persist();
+      }
+
+      function loadStarterTasks() {
+        const defaults = [
+          'Choose a date and venue',
+          'Set a realistic budget',
+          'Create the guest list',
+          'Choose a theme and colors',
+          'Plan food, drinks, and cake',
+          'Arrange decorations and ambience',
+          'Confirm vendors and helpers',
+          'Set the timing for inviting guests'
+        ];
+
+        const existing = (plan.tasks || []).map((item) => item.name);
+        defaults.forEach((item) => {
+          if (!existing.includes(item)) plan.tasks.push({ id: uid(), name: item, done: false });
+        });
+        renderTaskList();
+        renderOverview();
+        persist();
+      }
+
+      function addCommandVendorRow() {
+        if (!plan.vendors) plan.vendors = [];
+        plan.vendors.push({ assignment: '', identity: '', contact: '' });
         renderVendors();
-        saveState();
-    }
+        persist();
+      }
 
-    function updateVendorItem(idx, field, val) {
-        appState.vendors[idx][field] = val;
-        saveState();
-    }
+      function updateVendorItem(index, field, value) {
+        if (!plan.vendors[index]) return;
+        plan.vendors[index][field] = value;
+        persist();
+      }
 
-    function removeVendorItem(idx) {
-        appState.vendors.splice(idx, 1);
+      function removeVendorItem(index) {
+        plan.vendors.splice(index, 1);
         renderVendors();
-        saveState();
-    }
-</script>
+        persist();
+      }
+
+      function renderAll() {
+        renderOverview();
+        renderBudgetList();
+        renderGuestList();
+        renderTaskList();
+        renderSaved();
+        renderLedger();
+        renderGuestManifest();
+        renderVendors();
+        calculateFinancials();
+      }
+
+      function createPlan() {
+        persist();
+        plan = blankPlan();
+        activeId = plan.id;
+        plans.push(plan);
+        hydrate();
+        renderAll();
+        switchTab('details');
+        toast('A new celebration plan is ready.');
+      }
+
+      function loadSavedPlan(id) {
+        const match = plans.find((p) => p.id === id);
+        if (!match) return;
+        plan = match;
+        activeId = match.id;
+        hydrate();
+        renderAll();
+        switchTab('overview');
+        persist();
+      }
+
+      function deleteSavedPlan(id) {
+        const index = plans.findIndex((p) => p.id === id);
+        if (index < 0) return;
+        plans.splice(index, 1);
+        if (plans.length) {
+          plan = plans[plans.length - 1];
+          activeId = plan.id;
+        } else {
+          plan = blankPlan();
+          activeId = plan.id;
+          plans.push(plan);
+        }
+        hydrate();
+        renderAll();
+        persist();
+      }
+
+      function exportBackup() {
+        persist();
+        const blob = new Blob([JSON.stringify({ app: 'Birthday Bliss', version: 2, exportedAt: new Date().toISOString(), plan }, null, 2)], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `${(plan.celebrant || 'birthday-bliss-plan').replace(/\s+/g, '-').toLowerCase()}.json`;
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+        setTimeout(() => URL.revokeObjectURL(url), 2000);
+        toast('Plan backup exported.');
+      }
+
+      function importBackup(event) {
+        const file = event.target.files && event.target.files[0];
+        if (!file) return;
+
+        const reader = new FileReader();
+        reader.onload = () => {
+          try {
+            const data = JSON.parse(reader.result);
+            const incoming = data.plan || data;
+            if (!incoming || typeof incoming !== 'object' || !Array.isArray((incoming.expenses || incoming.guests || incoming.tasks || incoming.ledger || incoming.guestManifest || []).length ? [1] : [])) {
+              throw new Error('Invalid plan data');
+            }
+            plan = { ...blankPlan(), ...incoming, id: incoming.id || uid(), updatedAt: new Date().toISOString() };
+            activeId = plan.id;
+            plans = [...plans.filter((p) => p.id !== activeId), plan];
+            hydrate();
+            renderAll();
+            persist();
+            toast('Backup restored successfully.');
+          } catch (e) {
+            toast('That file could not be restored.');
+          } finally {
+            event.target.value = '';
+          }
+        };
+        reader.readAsText(file);
+      }
+
+      document.addEventListener('input', (event) => {
+        const target = event.target;
+        if (!(target instanceof HTMLElement)) return;
+        if (target.matches('[data-field]')) {
+          updatePlanFromInputs();
+          renderOverview();
+          persist();
+        }
+      });
+
+      document.addEventListener('change', (event) => {
+        const target = event.target;
+        if (!(target instanceof HTMLElement)) return;
+        if (target.matches('[data-field]')) {
+          updatePlanFromInputs();
+          renderOverview();
+          persist();
+        }
+      });
+
+      $('saveBtn').onclick = () => { persist(false); };
+      $('startPlanning').onclick = () => switchTab('details');
+      $('pdfBtn').onclick = () => { persist(); window.print(); };
+      $('jsonBtn').onclick = exportBackup;
+      $('importBtn').onclick = () => $('importFile').click();
+      $('importFile').onchange = importBackup;
+      $('newPlan').onclick = createPlan;
+      $('newPlan2').onclick = createPlan;
+
+      document.querySelectorAll('[data-tab]').forEach((button) => {
+        button.addEventListener('click', () => switchTab(button.dataset.tab));
+      });
+
+      window.addEventListener('beforeunload', () => {
+        try {
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(plans));
+          localStorage.setItem(ACTIVE_KEY, plan.id);
+        } catch (e) {}
+      });
+
+      const oldKey = 'birthdayBlissPlans_v1';
+      try {
+        if (!localStorage.getItem(STORAGE_KEY) && localStorage.getItem(oldKey)) {
+          const old = JSON.parse(localStorage.getItem(oldKey));
+          if (Array.isArray(old)) {
+            plans = old;
+            if (plans.length) {
+              plan = plans[0];
+              activeId = plan.id;
+            }
+          }
+        }
+      } catch (e) {}
+
+      loadAll();
+      switchTab('overview');
+    })();
+  </script>
 </body>
 </html>
